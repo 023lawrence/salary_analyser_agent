@@ -7,13 +7,13 @@
 
 ## 📌 Overview
 
-The **Salary Analyzer & Tax Opportunity Agent** transforms unstructured salary slips into structured, actionable insights.
-
+The **Salary Analyzer & Tax Opportunity Agent** transforms unstructured salary slips into structured, actionable insights.  
 Using OpenAI’s advanced parsing and analysis models, it:
-1. Extracts key salary components (Basic, HRA, PF, etc.).
-2. Identifies existing deductions and optimization gaps.
-3. Explains tax-saving options (like Section 80C/80D).
-4. Generates a secure and polished **AI-generated report in PDF** format.
+
+1. **Extracts** key salary components (Basic, HRA, PF, etc.).
+2. **Identifies** existing deductions and optimization gaps.
+3. **Explains** tax-saving options (like Section 80C/80D).
+4. **Generates** a secure and polished **AI-generated report in PDF** format.
 
 > ⚠️ **Disclaimer:**  
 > This tool is for **educational and informational purposes only**.  
@@ -22,84 +22,64 @@ Using OpenAI’s advanced parsing and analysis models, it:
 ---
 
 ## 🏗️ Project Structure
-
 /salary-agent-streamlit/
 ├── .streamlit/
-│ └── config.toml # Streamlit theme customization
-├── app.py # Main Streamlit app entry point
-├── agent.py # Core AI logic (parser + analyzer)
-├── prompts.py # Custom OpenAI system prompts
-├── tax_rules.py # Country-wise tax rules (India, USA)
-├── tools.py # Pydantic data schema for salary parsing
-├── pdf_report.py # PDF generation logic
-├── fonts/ # DejaVuSans fonts (for ₹/$ symbol support)
-├── requirements.txt # Python dependencies
-├── README.md # Project documentation
-└── .env # API key template
-
-yaml
-
----
+│   └── config.toml          # Streamlit theme customization
+├── app.py                   # Main Streamlit app entry point
+├── agent.py                 # Core AI logic (parser + analyzer)
+├── prompts.py               # Custom OpenAI system prompts
+├── tax_rules.py             # Country-wise tax rules (India, USA)
+├── tools.py                 # Pydantic data schema for salary parsing
+├── pdf_report.py            # PDF generation logic
+├── fonts/                   # DejaVuSans fonts (for ₹/$ symbol support)
+├── requirements.txt         # Python dependencies
+├── README.md                # Project documentation
+└── .env                     # API key template
+text---
 
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
-```bash
-git clone [your-repo-url]
+
+ “git clone https://github.com/023lawrence/salary-agent-streamlit.git"
 cd salary-agent-streamlit
 2. Create a Virtual Environment
-bash
-
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+"bashpython -m venv venv"
+"source venv/bin/activate"  # macOS/Linux
+# venv\Scripts\activate  # Windows
 3. Install Dependencies
-bash
-
-pip install -r requirements.txt
+bashpip install -r requirements.txt
 4. Set Up Environment Variables
-Copy .env.example → .env
-
-Add your OpenAI API key:
-
-bash
-
-OPENAI_API_KEY="sk-your-key-here"
-▶️ Run the Application
+Copy .env.example to .env and add your OpenAI API key:
+bashOPENAI_API_KEY="sk-your-key-here"
+5. Run the Application
 Start the app:
-
-bash
-
-streamlit run app.py
+bashstreamlit run app.py
 Then open your browser:
-
-arduino
-
 http://localhost:8501
-💼 How It Works
-Paste your payslip text
-Remove sensitive info like Name, PAN, Bank Account, etc.
 
+
+💼 How It Works
+
+Paste Your Payslip Text
+Remove sensitive info like Name, PAN, Bank Account, etc.
 AI Parser (Call 1)
 Extracts components (Basic, HRA, PF, etc.) → JSON output.
-
-Confirm extracted data
+Confirm Extracted Data
 You verify monthly values before analysis.
-
 AI Analyst (Call 2)
 Applies country tax rules (e.g., India FY 2024–25).
 Highlights tax-saving gaps, deductions, and opportunities.
-
 Generate & Download Report
 Produces a professional PDF including:
 
 Parsed data summary
-
 Tax savings breakdown
-
 Educational explanations
-
 Disclaimer footer
+
+
+
 
 🧮 Example Output (India FY 2024–25)
 Section 80C Gap Analysis
@@ -113,49 +93,40 @@ Section 80D
 Observation: No health insurance premium detected.
 Opportunity: Premiums paid for health insurance (self/family/parents) can be claimed under Section 80D (up to ₹25,000 for self, ₹25,000 for parents).
 
+
 🔐 Data Privacy & Compliance
+
 🛡️ No Data Stored: All analysis runs in-memory (session-based).
-
 ✅ User Confirmation: You verify extracted data before analysis.
-
 🚫 No Third-Party Sharing: The app runs locally and uses OpenAI’s API securely.
-
 🧠 AI Transparency: Every report includes an AI-generated report disclaimer.
 
+
 🧰 Tech Stack
-Layer	Tools & Libraries
-Frontend/UI	Streamlit
-Backend Logic	Python 3.12, OpenAI API
-Data Validation	Pydantic
-Styling & UI Config	.streamlit/config.toml
-Document Generation	ReportLab (with Unicode fonts)
-Environment Handling	python-dotenv
-Version Control	Git & GitHub
+LayerTools & LibrariesFrontend/UIStreamlitBackend LogicPython 3.12, OpenAI APIData ValidationPydanticStyling & UI.streamlit/config.tomlDocument Gen.ReportLab (with Unicode fonts)Environmentpython-dotenvVersion ControlGit & GitHub
 
 🌟 Future Enhancements
-📄 OCR integration for extracting payslip data from uploaded PDFs.
 
-🌍 Expand multi-country tax rule support (e.g., USA, UK, Canada).
+📄 OCR Integration: Extract payslip data from uploaded PDFs.
+🌍 Multi-Country Support: Expand tax rules (e.g., USA, UK, Canada).
+💹 Simulation Tool: Project tax savings based on new investments.
+🔐 User Auth: Optional authentication with encrypted local storage.
 
-💹 Add a simulation tool to project tax savings based on new investments.
-
-🔐 Optional user authentication with encrypted local storage.
 
 📜 License
 This project is open-source under the MIT License.
 
 🙌 Acknowledgements
-OpenAI API — for structured parsing and intelligent text analysis.
 
-Streamlit — for building a quick, interactive user interface.
+OpenAI API — For structured parsing and intelligent text analysis.
+Streamlit — For building a quick, interactive user interface.
+ReportLab — For professional PDF rendering with Unicode font support.
 
-ReportLab — for professional PDF rendering with Unicode font support.
 
 👨‍💻 Author
 Lawrence Mondal
 🎓 Data Science & Analytics Enthusiast | 💼 Financial Analyst
 🧾 Creator of the “Confidential Tax Analyst” Agent
-
-📧 Email: [lawrence.mondal24@gmail.com]
-🌐 LinkedIn: [https://www.linkedin.com/in/lawrence-mondal/]
-💻 GitHub: [https://github.com/023lawrence]
+📧 Email: lawrence.mondal24@gmail.com
+🌐 LinkedIn: linkedin.com/in/lawrence-mondal
+💻 GitHub: github.com/023lawrence
